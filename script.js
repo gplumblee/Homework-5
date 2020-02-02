@@ -24,7 +24,6 @@ let months = ["January", "February", "March", "April", "May", "June", "July", "A
 let d = new Date();
 
 let hour = d.getHours();
-console.log
 let day = d.getDay();
 let date = d.getDate();
 let month = d.getMonth();
@@ -34,7 +33,6 @@ let dateStr = days[day] + ", " + months[month] + " " + date + ", " + year;
 let today = d.toLocaleString();
 document.getElementById("currentDay").innerHTML = dateStr;
 
-console.log(hour);
 // The next step is to set each row with the current time stamp so that the description boxes can be color coded. 
 // Then, somehow trigger the background color to change from .future to .present or .past depending on the current time.
 //     If the hour class is less than current hour,
@@ -43,25 +41,21 @@ console.log(hour);
 //         assign the description column to present.
 //     If the hour class is greater than the current hour,
 //         assign the description column to future.
+
 let hours = ["9:00AM", "10:00AM", "11:00AM", "12:00PM", "1:00PM", "2:00PM", "3:00PM", "4:00PM", "5:00PM"]
 for (i = 0; i < hours.length; i++) {
-  $('.container').append(`<div class="row">
+  $(".container").append(`<div class="row">
 <div id="hour${i}" class="col-2 time-block hour">${hours[i]}</div>
-<textarea class="col-8 description ${hour<(i+9)?'past': hour=== i+9 ? 'present': 'future'}">${localStorage.getItem(`hour${i}`) || ""}</textarea>
+<textarea class="col-8 description ${hour<(i+9)?"past": hour=== i+9 ? "present": "future"}">${localStorage.getItem(`hour${i}`) || ""}</textarea>
 <div class="col-2 saveBtn btn btn-primary" data-toggle="saveBtn i:hover">SAVE</div>
 </div>`)
-//     console.log(hour);
-//   if (i < hour) {
-//     document.getElementById(i).childNodes[1].setAttribute("class", "past");
-//   } else if (i === hour) {
-//     document.getElementById(i).childNodes[1].setAttribute("class", "present");
-//   } else if (i > hour) {
-//     document.getElementById(i).childNodes[1].setAttribute("class", "future");
-//   }
 };
-$(".saveBtn").on('click', function() {
-  let todo = $(this).siblings('textarea').val().trim()
-  let key = $(this).siblings('.hour').attr('id')
+
+$(".saveBtn").on("click", function () {
+  let todo = $(this).siblings("textarea").val().trim()
+  let key = $(this).siblings(".hour").attr("id")
   console.log(key, todo)
   localStorage.setItem(key, todo);
 })
+
+// Trigger the save button to change to hover state when hovered.
