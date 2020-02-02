@@ -47,7 +47,7 @@ for (i = 0; i < hours.length; i++) {
   $(".container").append(`<div class="row">
 <div id="hour${i}" class="col-2 time-block hour">${hours[i]}</div>
 <textarea class="col-8 description ${hour<(i+9)?"past": hour=== i+9 ? "present": "future"}">${localStorage.getItem(`hour${i}`) || ""}</textarea>
-<div class="col-2 saveBtn btn btn-primary" data-toggle="saveBtn i:hover">SAVE</div>
+<div class="col-2 saveBtn btn btn-primary" data-toggle="saveBtn i:hover"></div>
 </div>`)
 };
 
